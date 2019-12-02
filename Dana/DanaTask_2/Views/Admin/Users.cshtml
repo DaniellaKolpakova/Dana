@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+<table border="1" style="border-collapse: collapse">
+    <tr>
+        <th style="padding: 5px;">Email</th>
+        <th style="padding: 5px;">Name</th>
+        <th style="padding: 5px;">Second name</th>
+        <th style="padding: 5px;">Role</th>
+    </tr>
+    @foreach (DanaTask_2.Models.User user in ViewBag.Users)
+    {
+        <tr>
+            <td style="padding: 5px;">@user.Email</td>
+            <td style="padding: 5px;">@user.Name</td>
+            <td style="padding: 5px;">@user.SecondName</td>
+            <td style="padding: 5px;">@user.Role</td>
+            @if ((int)Session["Id"] != user.Id)
+            {
+                if (user.Role == "User")
+                {
+                    <td><a href="../../Admin/MakeAdmin?userId=@user.Id">Make admin</a></td>
+                }
+                else
+                {
+                    <td><a href="../../Admin/MakeUser?userId=@user.Id">Make user</a></td>
+                }
+            }
+        </tr>
+    }
+</table>

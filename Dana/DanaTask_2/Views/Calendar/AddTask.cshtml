@@ -1,0 +1,39 @@
+﻿@model DanaTask_2.Models.Task
+
+@{
+    ViewBag.Title = "Add Task";
+}
+
+<h2>Add task to @ViewBag.Day @ViewBag.MonthString @ViewBag.Year</h2>
+<form action="?" method="post">
+    <input type="hidden" name="Date" value="@(ViewBag.Year)-@(ViewBag.Month)-@(ViewBag.Day)T00:00:00Z" />
+    <div>
+        <p>Title</p>
+        @Html.EditorFor(model => model.Title)
+    </div>
+    <div>
+        <p>Status</p>
+        <select name="Status">
+            @{
+                string[] statuses = new string[] { "Canceled", "In Progress", "Completed" };
+                foreach (string status in statuses)
+                {
+                    <option value="@status">@status</option>
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <p>Description</p>
+        @Html.EditorFor(model => model.Description)
+    </div>
+    <div style="color: red; font-weight: bold;">
+        @foreach (string error in ViewBag.Errors)
+        {
+            <p>@error</p>
+        }
+    </div>
+    <input type="submit" value="Add task" />
+    <a href="../../Calendar/Index?year=@ViewBag.Year&month=@ViewBag.Month">Back</a>
+</form>
+

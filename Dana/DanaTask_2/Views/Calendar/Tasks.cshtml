@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Tasks";
+}
+
+<h2>Tasks on @ViewBag.Day @ViewBag.MonthString @ViewBag.Year</h2>
+<a href="../../Calendar/Index?year=@ViewBag.Year&month=@ViewBag.Month">Back</a>
+@foreach (DanaTask_2.Models.Task task in ViewBag.Tasks)
+{
+    <div style="border: 1px solid black; padding: 5px; margin: 25px;">
+        <h1>@task.Title</h1>
+        <h3>Description</h3>
+        <p>@task.Description</p>
+        <a href="../../Calendar/EditTask?id=@task.Id">Edit</a>
+        <a href="../../Calendar/DeleteTask?id=@task.Id">Delete</a>
+    </div>
+}
+

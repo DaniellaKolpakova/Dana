@@ -1,0 +1,36 @@
+﻿@model DanaTask_2.Models.User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+<form action="?" method="post">
+    <div>
+        <p>Email</p>
+        @Html.EditorFor(model => model.Email)
+    </div>
+    <div>
+        <p>Password</p>
+        @Html.PasswordFor(model => model.Password)
+    </div>
+    <div>
+        <p>Repeat password</p>
+        @Html.PasswordFor(model => model.RePassword)
+    </div>
+    <div>
+        <p>Name</p>
+        @Html.EditorFor(model => model.Name)
+    </div>
+    <div>
+        <p>Second name</p>
+        @Html.EditorFor(model => model.SecondName)
+    </div>
+    <div style="color: red; font-weight: bold;">
+        @foreach (string error in ViewBag.Errors)
+        {
+            <p>@error</p>
+        }
+    </div>
+    <input type="submit" value="Register" />
+</form>

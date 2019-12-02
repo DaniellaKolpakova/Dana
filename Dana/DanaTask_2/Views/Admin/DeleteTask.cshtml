@@ -1,0 +1,16 @@
+﻿@model DanaTask_2.Models.Task
+
+@{
+    ViewBag.Title = "Delete Task";
+}
+
+<h2>Delete Task</h2>
+<form action="?" method="post">
+    @Html.HiddenFor(model => model.Id)
+    <h3>Title: @Model.Title</h3>
+    <h3>Status: @Model.Status</h3>
+    <h4>Description</h4>
+    <p>@Model.Description</p>
+    <input type="submit" value="Delete" />
+    <a href="../../Admin/Tasks">Back</a>
+</form>

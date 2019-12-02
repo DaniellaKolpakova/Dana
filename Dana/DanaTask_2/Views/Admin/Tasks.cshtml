@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Tasks";
+}
+
+<h2>All Tasks</h2>
+<div>
+    <form action="?" method="get">
+        <div>
+            <p>Title</p>
+            <input type="text" name="title" value="@ViewBag.TaskTitle" />
+        </div>
+        <div>
+            <p>Description</p>
+            <input type="text" name="desc" value="@ViewBag.Desc" />
+        </div>
+        <div>
+            <p>Min date</p>
+            <input type="datetime-local" name="min" value="@(ViewBag.Min?.ToString("yyyy-MM-ddThh:mm"))" />
+        </div>
+        <div>
+            <p>Max date</p>
+            <input type="datetime-local" name="max" value="@(ViewBag.Max?.ToString("yyyy-MM-ddThh:mm"))" />
+        </div>
+        <div>
+            <p>Status</p>
+            <select name="status">
+                @{
+                    string[] statuses = new string[] { "Any", "Canceled", "In Progress", "Completed" };
+                    foreach (string status in statuses)
+                    {
+                        if (status == ViewBag.Status)
+                        {
+                            <option value="@status" selected>@status</option>
+                        }
+                        else
+                        {
+                            <option value="@status">@status</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+        <input type="submit" value="Search" />
+    </form>
+</div>
+<table border="1" style="border-collapse: collapse">
+    <tr>
+        <th style="padding: 5px;">Creator</th>
+        <th style="padding: 5px;">Title</th>
+        <th style="padding: 5px;">Description</th>
+        <th style="padding: 5px;">Date</th>
+        <th style="padding: 5px;">Status</th>
+    </tr>
+    <tbody>
+        @foreach (DanaTask_2.Models.Task task in ViewBag.Tasks)
+        {
+            DanaTask_2.Models.User user = ((DanaTask_2.Models.User[])ViewBag.Users).Where(x => x.Id == task.UserId).FirstOrDefault();
+            <tr>
+                @if (user != null)
+                {
+                    <td style="padding: 5px;">@user.Email</td>
+                }
+                else
+                {
+                    <td style="padding: 5px;">Unknown</td>
+                }
+                <td style="padding: 5px;">@task.Title</td>
+                <td style="padding: 5px;">@task.Description</td>
+                <td style="padding: 5px;">@task.Date.ToString("dd-MM-yyyy")</td>
+                <td style="padding: 5px;">@task.Status</td>
+                <td style="padding: 5px;"><a href="../../Admin/EditTask?id=@task.Id">Edit</a></td>
+                <td style="padding: 5px;"><a href="../../Admin/DeleteTask?id=@task.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

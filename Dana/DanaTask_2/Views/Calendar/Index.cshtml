@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "My calendar";
+}
+
+<h2>My calendar</h2>
+<div>
+    <a href="?year=@(ViewBag.Year - 1)&month=@(ViewBag.Month)">Previus</a>
+    <b>@ViewBag.Year</b>
+    <a href="?year=@(ViewBag.Year + 1)&month=@(ViewBag.Month)">Next</a>
+</div>
+<div>
+    @if (ViewBag.Month > 1)
+    {
+        <a href="?year=@(ViewBag.Year)&month=@(ViewBag.Month - 1)">Previus</a>
+    }
+    <b>@ViewBag.MonthString</b>
+    @if (ViewBag.Month < 12)
+    {
+        <a href="?year=@(ViewBag.Year)&month=@(ViewBag.Month + 1)">Next</a>
+    }
+</div>
+<div>
+    <form method="get" action="?">
+        <p>Year: <input type="number" name="year" min="1" max="9999" value="@ViewBag.Year" /></p>
+        <p>
+            Month: 
+            <select name="month">
+                @for (int i = 0; i < 12; i++)
+                {
+                    string monthName = new DateTime(1, i + 1, 1).ToString("MMM", System.Globalization.CultureInfo.InvariantCulture);
+                    if (ViewBag.Month == i + 1)
+                    {
+                        <option value="@(i + 1)" selected>@monthName</option>
+                    }
+                    else
+                    {
+                        <option value="@(i + 1)">@monthName</option>
+                    }
+                }
+            </select>
+        </p>
+        <input type="submit" value="Go to" />
+    </form>
+</div>
+<br />
+<table border="1" style="border-collapse: collapse;">
+    <tbody>
+        @for (int y = 0; y < 5; y++)
+        {
+        <tr>
+            @for (int x = 0; x < 7; x++)
+            {
+                int index = y * 7 + x;
+                if (index >= ViewBag.MonthDays)
+                {
+                    break;
+                }
+                DanaTask_2.Models.Task[] tasks = ((DanaTask_2.Models.Task[])ViewBag.Tasks).Where(_task => _task.Date.Day == index + 1).ToArray();
+                if (tasks.Length != 0)
+                {
+                    if (tasks.Length > 1)
+                    {
+                        <td style="padding: 5px; background-color: goldenrod;"><a href="#" onclick="selectDate(@(index + 1), true); return false;">@(index + 1)</a></td>
+                    }
+                    else
+                    {
+                        if (tasks[0].Status == "Canceled")
+                        {
+                            <td style="padding: 5px; background-color: orangered;"><a href="#" onclick="selectDate(@(index + 1), true); return false;">@(index + 1)</a></td>
+                        }
+                        else if (tasks[0].Status == "In Progress")
+                        {
+                            <td style="padding: 5px; background-color: lightblue;"><a href="#" onclick="selectDate(@(index + 1), true); return false;">@(index + 1)</a></td>
+                        }
+                        else if (tasks[0].Status == "Completed")
+                        {
+                            <td style="padding: 5px; background-color: lightgreen;"><a href="#" onclick="selectDate(@(index + 1), true); return false;">@(index + 1)</a></td>
+                        }
+                    }
+                }
+                else
+                {
+                    <td style="padding: 5px;"><a href="#" onclick="selectDate(@(index + 1), false); return false;">@(index + 1)</a></td>
+                }
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<div>
+    <a href="#" id="add-task-link" style="display: none;"></a>
+    <br />
+    <a href="#" id="current-task-link" style="display: none;"></a>
+</div>
+<script>
+    let year = @ViewBag.Year;
+    let month = @ViewBag.Month;
+    let day = -1;
+
+    let monthStr = '@ViewBag.MonthString';
+
+    function selectDate(selectedDay, showTasksLink) {
+        day = selectedDay;
+
+        document.getElementById("add-task-link").style.display = "block";
+        document.getElementById("add-task-link").href = `../Calendar/AddTask?year=${year}&month=${month}&day=${day}`;
+        document.getElementById("add-task-link").innerHTML = `Add task to ${day} ${monthStr} ${year}`;
+
+        if (showTasksLink) {
+            document.getElementById("current-task-link").style.display = "block";
+            document.getElementById("current-task-link").href = `../Calendar/Tasks?year=${year}&month=${month}&day=${day}`;
+            document.getElementById("current-task-link").innerHTML = `Show tasks on ${day} ${monthStr} ${year}`;
+        }
+        else {
+            document.getElementById("current-task-link").style.display = "none";
+        }
+    }
+</script>
+
