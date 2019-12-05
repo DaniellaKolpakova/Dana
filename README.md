@@ -7,3 +7,10 @@ CalendarTasks
 Цели для второго задания: Цель была сделать сайт, где можно будет добавлять задачи к разным датам и разным месяцев. Регистрация и авторизация Фильтр и сортировка по имени, дате или описанию. Редактирование уже добавленных событий Удаление уже ранее добавленных событий
 
 Задачи: Создать возможность: Регистрации и авторизации Пользователям добавлять новые даты Администраторам изменять / удалять даты
+
+Проект: Задание первое 
+<a href="https://ibb.co/2n7ppCp"><img src="https://i.ibb.co/xCSrrBr/1.png" alt="1" border="0"></a>
+<a href="https://ibb.co/XsVfD5B"><img src="https://i.ibb.co/Ykb4Xd9/2.png" alt="2" border="0"></a>
+<a href="https://ibb.co/LnngDk0"><img src="https://i.ibb.co/r44pK7Q/H-i4va.png" alt="H-i4va" border="0"></a>
+<a href="https://ibb.co/56x7r7V"><img src="https://i.ibb.co/vHvt3t8/H-iv3a.png" alt="H-iv3a" border="0"></a>
+<a href="https://ibb.co/ZKf8vz2"><img src="https://i.ibb.co/tcHsnpL/H-iva5.png" alt="H-iva5" border="0"></a>
