@@ -10,8 +10,9 @@ CalendarTasks
 
 Проект: Задание первое 
 
+Главная страница:
 <a href="https://ibb.co/2n7ppCp"><img src="https://i.ibb.co/xCSrrBr/1.png" alt="1" border="0"></a>
-
+Страница при входе админа:
 <a href="https://ibb.co/XsVfD5B"><img src="https://i.ibb.co/Ykb4Xd9/2.png" alt="2" border="0"></a>
 
 <a href="https://ibb.co/LnngDk0"><img src="https://i.ibb.co/r44pK7Q/H-i4va.png" alt="H-i4va" border="0"></a>
