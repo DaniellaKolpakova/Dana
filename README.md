@@ -37,3 +37,12 @@ XSLT фаил:
 Как он выглядит:
 
 <a href="https://ibb.co/bJs7MgK"><img src="https://i.ibb.co/cL6xScr/H-iv1111a.png" alt="H-iv1111a" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>image hosts</a><br />
+
+php фаил: 
+
+<a href="https://ibb.co/TgTQRV1"><img src="https://i.ibb.co/W23rFb0/H-iva.png" alt="H-iva" border="0"></a>
+
+Tasks:
+
+<a href="https://ibb.co/QDm5bGz"><img src="https://i.ibb.co/y4s3fJG/H-iv3a.png" alt="H-iv3a" border="0"></a>
+
