@@ -39,6 +39,8 @@ XSLT фаил:
 <a href="https://ibb.co/bJs7MgK"><img src="https://i.ibb.co/cL6xScr/H-iv1111a.png" alt="H-iv1111a" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>image hosts</a><br />
 
 php фаил: 
+На этой странице есть сортировка по дням задачи(начало и конец срока)
+Так же можно искать задачу по имени человека
 
 <a href="https://ibb.co/TgTQRV1"><img src="https://i.ibb.co/W23rFb0/H-iva.png" alt="H-iva" border="0"></a>
 
